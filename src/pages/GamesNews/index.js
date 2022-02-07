@@ -1,0 +1,1 @@
+export { GamesNews } from './GamesNews';
