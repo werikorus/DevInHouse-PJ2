@@ -59,7 +59,11 @@ export const LatestNews = (props) =>{
   const renderContentAPI = () => {
    
     if(!isLoading){
-      return <Loading/>
+      return(
+        <>
+          <Typography str="Loading..." color="white"/>
+          <Loading/>
+        </>) 
     }else{
       if(latestNewsFiltered.length===0){
         return <MessageBox messsage="Results not found !"/>;
@@ -72,15 +76,18 @@ export const LatestNews = (props) =>{
     }
 
     return(
-      <Pagination 
-        Items={latestNewsFiltered}
-        PageInfos={pageInfo}
-        hasNext={true} 
-        hasPrevious={true}
-        handlePrevious={handlePreviousPage}
-        handleNext={handleNextPage}
-        typeCard={2}
-      />  
+      <>
+        <Typography str="Latest News" color="white"/>
+        <Pagination 
+          Items={latestNewsFiltered}
+          PageInfos={pageInfo}
+          hasNext={true} 
+          hasPrevious={true}
+          handlePrevious={handlePreviousPage}
+          handleNext={handleNextPage}
+          typeCard={2}
+        />  
+      </>
     );
   }
     
@@ -95,7 +102,6 @@ export const LatestNews = (props) =>{
           }}
         />
       </SearchingArea>
-      <Typography str="Latest News" color="white"/>
       {renderContentAPI()}  
     </Content>
   );

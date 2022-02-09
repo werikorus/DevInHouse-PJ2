@@ -56,32 +56,35 @@ export const GamesNews = (props) =>{
     setPage((currentPage)=>(currentPage >= maxQtdPages ? maxQtdPages: currentPage + 1 ));
   }
 
-
   const renderContentAPI = () => {
-   
     if(!isLoading){
-      return <Loading/>
-    }else{
+        return(
+          <>
+            <Typography str="Loading..." color="white"/>
+            <Loading/>
+          </>) 
+      }else{
       if(gamesNewsFiltered.length===0){
-        return <MessageBox messsage="Results not found !"/>;
+        return <MessageBox messsage={gamesNewsFiltered.status}/>;
       }
     }
-
     const pageInfo =  {
       currentPage: page,
       totalPages: maxQtdPages
     }
-
     return(
-      <Pagination 
-        Items={gamesNewsFiltered}
-        PageInfos={pageInfo}
-        hasNext={true} 
-        hasPrevious={true}
-        handlePrevious={handlePreviousPage}
-        handleNext={handleNextPage}
-        typeCard={1}
-      />  
+      <>
+        <Typography str="Games" color="white"/>
+        <Pagination 
+          Items={gamesNewsFiltered}
+          PageInfos={pageInfo}
+          hasNext={true} 
+          hasPrevious={true}
+          handlePrevious={handlePreviousPage}
+          handleNext={handleNextPage}
+          typeCard={1}
+        />  
+      </>
     );
   }
     
@@ -96,7 +99,6 @@ export const GamesNews = (props) =>{
           }}
         /> 
       </SearchingArea>      
-      <Typography str="Games News" color="white"/>
       {renderContentAPI()}  
     </Content>
   );

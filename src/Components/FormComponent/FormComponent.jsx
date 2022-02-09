@@ -37,7 +37,7 @@ export const FormComponent = (props) =>{
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {      
-       setLocalStorage(values);
+      setLocalStorage(values);
     },
   });
   
