@@ -4,7 +4,7 @@ export const Section = styled.section`
   width: 100%;
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const GamesCardsArea = styled.div`
   max-width: 1000px;

@@ -45,17 +45,15 @@ export const GamesNews = (props) =>{
   },[termSearching]);
   
   useEffect(()=>{
-    setgamesNewsFiltered(filterListByPage(gamesNews.current, termSearching));
+    setgamesNewsFiltered(filterListByPage(gamesNews.current, page));
   },[page]);
    
   const handlePreviousPage = () =>{
     setPage((currentPage) => (currentPage > 1 ? currentPage - 1 : 1));
-    console.log(`Apertou para a anterior! ${page}`)
   }
   
   const handleNextPage = () =>{
-    setPage((currentPage)=>(currentPage >= maxQtdPages ? maxQtdPages: currentPage ))
-    console.log(`Apertou para a próxima! ${page}`)
+    setPage((currentPage)=>(currentPage >= maxQtdPages ? maxQtdPages: currentPage + 1 ));
   }
 
 

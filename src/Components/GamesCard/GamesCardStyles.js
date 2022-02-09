@@ -18,7 +18,7 @@ export const Card = styled.div`
     box-shadow: rgba(79, 78, 78, 0.922) 1px 0.1px 10px;
     background: rgba(1, 1, 1, 0.1);
     border: 0.1px solid white;
-    font-color: white;
+    color: white;
     cursor: pointer;
   }
 `;

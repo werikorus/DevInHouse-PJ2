@@ -31,7 +31,10 @@ export const TextArea = styled.section`
 `
 
 export const ContentFooter = styled.footer`
-  
+  display: flexbox;
+  ${'' /* background: yellow; */}
+  padding-left: 1rem;
+  padding-bottom: 1rem;
 `;
 
 export const ComemntsArea = styled.ul`
@@ -48,4 +51,5 @@ export const Commentary = styled.li`
 `;
 
 export const HorizontalLine = styled.hr`
+  width: 95%;
 `;

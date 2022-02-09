@@ -4,6 +4,13 @@ import { Component } from './LoadingStyles';
 
 export const Loading = ()=>{
   return(
-    <ReactLoading type={"String"} color="white" height={667} width={375} />
+    <Component>
+      <ReactLoading 
+        type={"cylon"} 
+        color="white" 
+        height={200} 
+        width={200}
+      />
+    </Component>
   );
 };

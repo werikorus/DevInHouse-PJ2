@@ -1,11 +1,11 @@
 import {React, useState, useRef, useEffect}  from "react";
-import { ButtonAction } from "../../Components/ButtonAction";
 import { Pagination } from "../../Components/Pagination";
 import { getAllNews } from './../../Services/latestNewsAPI';
 import { Content, SearchingArea } from "./LatestNewsSyles";
 import { InputArea } from "../../Components/InputArea";
 import { Loading } from "../../Components/Loading";
 import { MessageBox } from "../../Components/MessageBox";
+import { Typography } from "../../Components/Typography";
 import { ToolBar } from "../../Components/ToolBar";
 
 
@@ -45,19 +45,16 @@ export const LatestNews = (props) =>{
   },[termSearching]);
   
   useEffect(()=>{
-    setlatestNewsFiltered(filterListByPage(latestNews.current, termSearching));
+    setlatestNewsFiltered(filterListByPage(latestNews.current, page));
   },[page]);
    
   const handlePreviousPage = () =>{
     setPage((currentPage) => (currentPage > 1 ? currentPage - 1 : 1));
-    console.log(`Apertou para a anterior! ${page}`)
   }
   
   const handleNextPage = () =>{
-    setPage((currentPage)=>(currentPage >= maxQtdPages ? maxQtdPages: currentPage ))
-    console.log(`Apertou para a próxima! ${page}`)
+    setPage((currentPage)=>(currentPage >= maxQtdPages ? maxQtdPages: currentPage + 1 ));
   }
-
 
   const renderContentAPI = () => {
    
@@ -98,6 +95,7 @@ export const LatestNews = (props) =>{
           }}
         />
       </SearchingArea>
+      <Typography str="Latest News" color="white"/>
       {renderContentAPI()}  
     </Content>
   );

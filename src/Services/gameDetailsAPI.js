@@ -12,7 +12,6 @@ export const getGameDetails = async (idGame) => {
       
       if(data){
         const listItems = await data.json();
-        console.log(data.status);
         return listItems;
       }
       

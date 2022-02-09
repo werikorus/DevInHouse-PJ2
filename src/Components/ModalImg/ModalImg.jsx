@@ -2,7 +2,6 @@ import ModalImage from "react-modal-image"
 import { Img } from './ModalImgStyles';
 
 export const ModalImg = (prop) => {
-  console.log(prop.smallImg)
   return(
     <Img>
       <ModalImage
