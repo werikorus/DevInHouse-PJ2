@@ -16,7 +16,6 @@ export const About = () =>{
       <Main>           
        <Typography str={text} fontSize="1.2rem" />
       </Main> 
-    </Page>
-     
+    </Page>     
   );
 }

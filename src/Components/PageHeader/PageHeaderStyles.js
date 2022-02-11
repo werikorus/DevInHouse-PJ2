@@ -32,3 +32,7 @@ export const Img = styled.img`
 export const ToolBar = styled.div`
 
 `;
+
+export const TitleArea = styled.div`
+
+`;

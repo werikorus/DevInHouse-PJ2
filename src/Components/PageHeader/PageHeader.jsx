@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Header, Img, TextArea, Line, Subtitle, ToolBar } from './PageHeaderStyles.js';
+import { Header, TitleArea, Img, TextArea, Line, Subtitle, ToolBar } from './PageHeaderStyles.js';
 import imgHeader from './../../assets/images/header_img.png';
 import  { Typography }  from "../Typography";
 
@@ -10,16 +9,16 @@ export const PageHeader = () =>{
   return (
     <Header>
       <TextArea>        
-        <div>
+        <TitleArea>
           <Typography str={"NewsGame"} fontSize="4.5rem"/>
           <Line />
           <Subtitle>
             <Typography str={"Best news about games !"} fontSize={"1rem"}/>  
           </Subtitle>          
-        </div>        
+        </TitleArea>        
         <FaGamepad  size={98}/>        
       </TextArea>           
-      <Img src={imgHeader}></Img>
+      <Img id="pageHeaderImg" src={imgHeader}></Img>
     </Header>
   );
 }

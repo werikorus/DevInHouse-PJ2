@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   width: 100%;
+  display: grid;
   align-items: center;
+  align-self: center;
   justify-content: center;
 `
 
@@ -29,4 +31,5 @@ export const InfoArea= styled.div`
   display: flex;
   width: 18rem;
   justify-content: space-between;
+  jusfify-self: center;
 `;

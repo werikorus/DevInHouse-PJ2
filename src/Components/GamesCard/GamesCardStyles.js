@@ -1,17 +1,15 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  ${'' /* max-height: 15.3rem; */}
   width: 13rem;
   background: white;
   border-radius: 0.5rem;
   display: grid;
   margin-top: 1.5rem;
-  ${'' /* box-shadow: rgba(79, 78, 78, 0.522) 1px 0.1px 10px; */}
+  box-shadow: rgba(79, 78, 78, 0.522) 1px 0.1px 10px;
   overflow: hidden;
   transition: 0.4s;
   padding: 0.3rem;
-  
   
   &:hover,
   &:focus{

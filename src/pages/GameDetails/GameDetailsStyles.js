@@ -8,7 +8,6 @@ export const Page = styled.div`
 export const Content = styled.main`
   background: white;
   width: 100%;
-  ${'' /* height: 100vh; */}
   max-width: 50rem;
   border-radius: 0.8rem;
   margin: auto;
@@ -27,9 +26,15 @@ export const Image = styled.img`
 `;
 
 export const TextArea = styled.section`
+  align-self: center;
   padding: 1rem;
 `
 
+export const InformationArea = styled.div`
+  display: flex;
+  padding: 1rem;
+  justify-content: space-evenly;
+`
 export const ContentFooter = styled.footer`
   display: flexbox;
   ${'' /* background: yellow; */}
@@ -45,7 +50,7 @@ export const ComemntsArea = styled.ul`
 export const Commentary = styled.li`
   list-style: none;
   display: flex;
-  margin-bottom: 2mm;
+  margin-bottom: 1rem;
   font-size: 1.3rem;
   padding: 10px;
 `;
@@ -53,3 +58,12 @@ export const Commentary = styled.li`
 export const HorizontalLine = styled.hr`
   width: 95%;
 `;
+
+export const GameButton = styled.div`
+  padding: 2rem;
+  display: flex;  
+  width: 20%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+`

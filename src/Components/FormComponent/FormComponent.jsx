@@ -1,78 +1,72 @@
 import React from 'react';
-import { Formik, Field, Form, useFormik } from 'formik';
+import { Formik, Field, Form, useFormik, ErrorMessage } from 'formik';
 import { Typography } from '../Typography';
-import { ButtonAction } from "../ButtonAction";
 import { WriteComentArea, CommentArea } from './FormComponentStyles';
+import { TextareaAutosize } from '@mui/base';
+import { Button } from '@material-ui/core'
+import { setLocalData } from './../../Services/localStorageAPI';
+import { initialValues, validationSchema } from './../../helper/helper.js';
 
 import * as yup from 'yup';
 
 export const FormComponent = (props) =>{
   const { idGame } = props;
-  
-  const commentsStorage = JSON.parse(localStorage.getItem('comments'))||[];
-  
-  const setLocalStorage =(commentary)=>{
-    localStorage.setItem('comments', JSON.stringify(commentary));  
-  }
 
-  const validationSchema = yup.object({
-    password: yup
-      .string('Enter your name!')
-      .required('Password is required'),
-    email: yup
-      .string('Enter your email')
-      .email('Enter a valid email')
-      .required('Email is required'),
-    commentary: yup
-      .string('Enter a commenty')
-      .min(500, 'Your commentary should have only 500 charactaries!')
-      .required('A text is required for the comment'),
-  });
+  const onSubmit = (values, props) => {
+    // setLocalData(values);
+    console.log(values);
+    setTimeout(() => {
+      props.resetForm();
+      props.setSubmitting(false);
+    }, 2000)
+  };
 
-  const formik = useFormik({
-    initialValues:{
-      name: '',
-      email: '',
-      commentary: ''
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values) => {      
-      setLocalStorage(values);
-    },
-  });
-  
   return(
     <WriteComentArea>
-      <Formik>
-        <Form onSubmit={formik.handleSubmit}>
-          <Typography str="Name:"  fontSize="1rem"/>
-          <Field 
-            id="name" 
-            name="name"
-            value={formik.values.name}
-          />
-        
-          <Typography str="e-mail:" fontSize="1rem"/>
-          <Field 
-            id="email" 
-            name="email"
-            value={formik.values.email}
-            type="email"                              
-          />
-
-          <Typography
-            str="Leave a comment here:"
-            fontSize="1rem"
+      <Formik 
+        initialValues={initialValues}
+        onSubmit={onSubmit} 
+        validationSchema={validationSchema}
+      >
+        {(props) => (
+          <Form>
+            <Typography str="Name:"  fontSize="1rem"/>
+            <Field label='Name' name="name"
+              placeholder='Enter your name' fullWidth required
+              helperText={<ErrorMessage name="name" style={{ color: "red" }}/>}
             />
-          <CommentArea 
-            id="commentary"
-            name="commentary"
-          />
-        
-          <ButtonAction str="Send comment" />              
-        </Form>
-      </Formik>
 
+            <Typography str="e-mail:" fontSize="1rem"/>
+            <Field label='e-mail' name="email"
+              placeholder='Enter your e-mail' type='email' fullWidth required
+              helperText={<ErrorMessage name="email" style={{ color: "red" }}/>}
+            />
+            
+            <Typography str="Leave a comment here:" fontSize="1rem"/>
+            <Field 
+              as={TextareaAutosize} 
+              label='e-mail' 
+              name="commentary" 
+              type='commentary' 
+              fullWidth required
+              style={{
+                width: "99%", 
+                height: 100,
+                borderRadius: "0.3rem",
+                marginBottom: "0.3rem"}}
+              helperText={<ErrorMessage name="commentary" style={{ color: "red" }}/>}
+            />  
+
+            <Button 
+              type='submit' 
+              color='primary' 
+              variant="contained"              
+              disabled={props.isSubmitting}
+              fullWidth>{props.isSubmitting ? "Loading" : "Send your comment"}
+            </Button> 
+          </Form>
+        )}
+      </Formik>
     </WriteComentArea>
   );
 }

@@ -9,10 +9,8 @@ export const PageFooter = () =>{
   return (
     <FooterContent>
       <TextArea>
-        <Typography str={"Powered by"} fontSize="1rem" color="white"/>
-        <stronger>
-          <MyWebPage href="https://www.linkedin.com/in/werik-santos-5066aab5/">Werik Santos</MyWebPage>
-        </stronger>
+        <Typography str={"Powered by"} fontSize="1rem" color="white"/>        
+          <MyWebPage href="https://www.linkedin.com/in/werik-santos-5066aab5/">Werik Santos</MyWebPage>        
         <MdComputer color="white" size={45}/>           
         <Typography str={"DevInHouse 2022"} fontSize="1rem" color="white"/>
       </TextArea>

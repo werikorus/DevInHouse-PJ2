@@ -3,9 +3,8 @@ import styled from "styled-components"
 export const WriteComentArea = styled.fieldset`
   margin: 40px;
   border-radius: 0.5rem;
-  
 `
-export const CommentArea = styled.textarea`
+export const CommentArea = styled.div`
   height: 3rem;
   width: 100%;
   max-width: 100%;
