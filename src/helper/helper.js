@@ -18,7 +18,7 @@ export const validationSchema = yup.object().shape({
     .required('Email is required!'),
   commentary: yup
     .string('Enter a commenty')
-    .min(500, 'Your commentary should have only 500 charactaries!')
+    .max(500, 'Your commentary should have only 500 charactaries!')
     .required('A text is required for the comment !'),
 });
 

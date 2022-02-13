@@ -17,6 +17,12 @@ export const GamesNews = (props) =>{
   const [termSearching, settermSearching] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
+
+  
+  const topElement = useRef();
+  const handleBacktoTop=()=>{
+    topElement.current.scrollIntoView({behavior: "smooth"});
+  }
     
    
   useEffect(()=>{(
@@ -50,10 +56,12 @@ export const GamesNews = (props) =>{
    
   const handlePreviousPage = () =>{
     setPage((currentPage) => (currentPage > 1 ? currentPage - 1 : 1));
+    handleBacktoTop()
   }
   
   const handleNextPage = () =>{
     setPage((currentPage)=>(currentPage >= maxQtdPages ? maxQtdPages: currentPage + 1 ));
+    handleBacktoTop()
   }
 
   const renderContentAPI = () => {
@@ -83,6 +91,7 @@ export const GamesNews = (props) =>{
           handlePrevious={handlePreviousPage}
           handleNext={handleNextPage}
           typeCard={1}
+          ref={topElement}
         />  
       </>
     );

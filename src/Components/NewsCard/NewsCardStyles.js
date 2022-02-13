@@ -10,6 +10,14 @@ export const CardArea = styled.div`
   box-shadow: 1px black;
   align-items: center;
   box-shadow: rgba(79, 78, 78, 0.522) 1px 0.1px 10px;
+  transition: 0.4s;
+
+  &hover:{
+    box-shadow: rgba(79, 78, 78, 0.922) 1px 0.1px 10px;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    height: auto;
+  }
 `;
 
 export const Image = styled.img`

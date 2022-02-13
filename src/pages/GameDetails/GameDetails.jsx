@@ -8,7 +8,6 @@ import { Loading } from '../../Components/Loading';
 import { getLocalData } from '../../Services/localStorageAPI.js';
 import { Button } from '@material-ui/core'
 import { FaGamepad } from 'react-icons/fa'
-import './../../Services/localStorageAPI.js' ;
 
 
 import parse from 'html-react-parser';
@@ -19,18 +18,26 @@ import { Page,
          ContentHeader, 
          TextArea,
          InformationArea, 
-         ContentFooter,
-         ComemntsArea,
-         Commentary,
          HorizontalLine,
          GameButton } from './GameDetailsStyles';
          
 import { Typography } from "../../Components/Typography";
 
 
+
 export const GameDetails = () =>{
+
+  const topElement = useRef();
+  const handleBacktoTop=()=>{
+    topElement.current.scrollIntoView({behavior: "smooth"});
+  }
+  
+
   const game = useRef([]);
   const [currentGame, setCurrentGame] = useState([]);
+
+  const gameComments = useRef([]);
+  const [comments, setCommentsGame] = useState([]);
 
   const { idGame } = useParams();
  
@@ -39,8 +46,20 @@ export const GameDetails = () =>{
       const data = await getGameDetails(idGame);      
       game.current = data;
       setCurrentGame(game.current);
+      handleBacktoTop();
     })();
   },[]);
+
+  useEffect(()=>{(
+    async ()=>{
+      const commentsOnData = await getLocalData();
+      if(commentsOnData){
+        const comments = JSON.parse(commentsOnData);
+        const find = comments.find((item) => item.id === idGame);
+        setCommentsGame(find);
+      }
+    })();
+  },[idGame]);
 
   const handleScreenShots =()=>{
     if(currentGame.screenshots){
@@ -52,7 +71,7 @@ export const GameDetails = () =>{
     if(currentGame.minimum_system_requirements){
       return(
         <>
-          <TextArea>
+          <TextArea >
             <Typography 
             str={`Minimum System Requirements for ${currentGame.platform}`} 
             fontSize="1.2rem" 
@@ -91,14 +110,12 @@ export const GameDetails = () =>{
     }
   }
 
-  const commentsStorage = getLocalData() || [];
-
   const handleContent =()=>{
     if(!currentGame){
       <Loading />
     }else{
       return( 
-        <Page>
+        <Page ref={topElement}>
           <ToolBar />
           <Content>
             <ContentHeader>
@@ -158,11 +175,13 @@ export const GameDetails = () =>{
                 color='primary' 
                 variant="contained"              
                 href={currentGame.game_url}
+                target="_blank"
                 style={{
-                  width: "10rem",
+                  width: "8rem",
                   heigth: "6rem",
                   alignItems: "center",
-                  display: "flexbox",               
+                  display: "flexbox", 
+                  justifyContent: "space-between",              
                   borderRadius: "0.3rem",
                   marginBottom: "0.3rem"}}
                 fullWidth>         
@@ -171,18 +190,7 @@ export const GameDetails = () =>{
               </Button> 
             </GameButton> 
                               
-            <FormComponent />
-
-            <ContentFooter>
-              <ComemntsArea>
-                {commentsStorage.map((item, key)=>{
-                  <Commentary>
-                    <Typography src={item.comment} />
-                    <Typography src={item.date} />
-                  </Commentary>
-                })}          
-              </ComemntsArea>      
-            </ContentFooter>
+            <FormComponent idGame={idGame}/>
           </Content>
         </Page>
       );

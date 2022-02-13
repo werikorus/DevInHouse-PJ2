@@ -14,9 +14,14 @@ export const Card = styled.div`
   &:hover,
   &:focus{
     box-shadow: rgba(79, 78, 78, 0.922) 1px 0.1px 10px;
-    background: rgba(1, 1, 1, 0.1);
-    border: 0.1px solid white;
+    ${'' /* background: rgba(1, 1, 1, 0.1); */}
+    ${'' /* border: 0.1px solid white; */}
+
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    height: auto;
     color: white;
+    font-color: white;
     cursor: pointer;
   }
 `;

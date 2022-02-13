@@ -9,17 +9,13 @@ export const NewsCard = (props) =>{
   return (
     <CardArea>        
       <Image src={image} alt="loading.."/>
-
       <TextArea>
         <Typography str={title} fontSize="1.2rem" color="black"/>
         <Typography str={shortDescription} fontSize="0.8rem" color="black"/>
-
-        <a id="link" href={urlNews}>
+        <a id="link" href={urlNews} target="_blank">
           read more...
         </a>
-
       </TextArea>
-
     </CardArea>
   );
 }
