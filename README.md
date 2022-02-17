@@ -10,4 +10,6 @@ Tecnologias usadas:
 * LocalStorage
 * API-Rest
 
+Deploy: https://newsgamemmo.herokuapp.com/
+
 <img src="./src/assets/images/home_page.PNG"/>
